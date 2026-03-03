@@ -1,26 +1,55 @@
+"use client";
+
 import React from "react";
+import { motion, Variants } from "framer-motion";
 
 export function FinalCTA() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.95, y: 30 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
     <section
       id="book-call"
-      className="container mx-auto px-6 mt-32 max-w-4xl text-center"
+      className="container mx-auto px-6 mt-32 md:mt-48 mb-24 md:mb-32 max-w-4xl text-center"
     >
-      <div className="space-y-8">
-        <div className="space-y-5">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={containerVariants}
+        className="space-y-10 md:space-y-12"
+      >
+        <div className="space-y-4 md:space-y-6">
+          <h2 className="text-4xl md:text-7xl font-black tracking-tight leading-[1.1]">
             Build Activation Infrastructure That{" "}
             <span className="text-brand-blue">Compounds</span>
           </h2>
-          <p className="text-zinc-400 text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
             Stop leaking users. Our systems turn one-time wallet connects into
             long-term protocol participants.
           </p>
         </div>
-        <button className="px-8 py-4 bg-brand-blue hover:bg-blue-600 rounded-xl font-bold text-sm transition-all hover:shadow-[0_0_24px_rgba(59,130,246,0.45)]">
+        <motion.button
+          whileHover={{
+            scale: 1.02,
+            boxShadow: "0 0 40px rgba(59,130,246,0.4)",
+          }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full sm:w-auto px-8 md:px-12 py-5 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-lg md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] active:scale-95"
+        >
           Book 15-Minute Activation Audit
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     </section>
   );
 }
