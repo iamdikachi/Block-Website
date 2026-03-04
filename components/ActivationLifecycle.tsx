@@ -43,7 +43,7 @@ export function ActivationLifecycle() {
   };
 
   return (
-    <section id="process" className="container mx-auto px-6 mt-40 max-w-5xl">
+    <section id="process" className="container mx-auto px-6 mt-24 max-w-5xl">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -13,9 +13,9 @@ export function ProblemCard({ icon, title, description }: ProblemCardProps) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      className="group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-brand-blue/30 hover:bg-white/[0.04] transition-colors duration-500 overflow-hidden h-full"
+      className="group relative p-8 rounded-3xl bg-white/2 border border-white/5 hover:border-brand-blue/30 hover:bg-white/4 transition-colors duration-500 overflow-hidden h-full"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      <div className="absolute inset-0 bg-linear-to-br from-brand-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       
       <motion.div 
         whileHover={{ rotate: 10, scale: 1.1 }}

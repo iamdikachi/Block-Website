@@ -42,7 +42,7 @@ export function ProblemSection() {
   };
 
   return (
-    <section className="container mx-auto px-6 mt-24 md:mt-40 max-w-6xl">
+    <section className="container mx-auto px-6 mt-24  max-w-6xl">
       <motion.div
         initial="hidden"
         whileInView="visible"

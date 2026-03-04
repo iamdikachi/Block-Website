@@ -28,10 +28,10 @@ export function FitSection() {
   };
 
   return (
-    <section className="mt-24 md:mt-40 bg-brand-dark border-t border-b border-white/5 overflow-hidden">
+    <section className="mt-24  bg-brand-dark border-t border-b border-white/5 overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl py-16 md:py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32">
-          {/* Is For */}
+     
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -81,7 +81,7 @@ export function FitSection() {
             </ul>
           </motion.div>
 
-          {/* Not A Fit */}
+
           <motion.div
             initial="hidden"
             whileInView="visible"

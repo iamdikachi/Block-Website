@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function ReadyCTA() {
   return (
-    <section className="container mx-auto px-6 mt-24 md:mt-48 max-w-4xl text-center">
+    <section className="container mx-auto px-6 mt-24 max-w-4xl text-center">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}

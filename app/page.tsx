@@ -14,8 +14,8 @@ import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#030712] text-white selection:bg-brand-blue/30 overflow-x-hidden relative">
-      {/* Animated Background Orbs */}
+    <div className="min-h-screen bg-brand-dark text-white selection:bg-brand-blue/30 overflow-x-hidden relative">
+
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -44,7 +44,7 @@ export default function Home() {
       <Navbar />
 
       <main className="relative pt-32 pb-24">
-        {/* Central Background Gradient */}
+ 
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] rounded-full -z-10 pointer-events-none"
           style={{

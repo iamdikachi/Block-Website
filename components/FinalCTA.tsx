@@ -20,17 +20,17 @@ export function FinalCTA() {
   return (
     <section
       id="book-call"
-      className="container mx-auto px-6 mt-32 md:mt-48 mb-24 md:mb-32 max-w-4xl text-center"
+      className="container mx-auto px-6 mt-10 max-w-4xl text-center"
     >
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
-        className="space-y-10 md:space-y-12"
+        className="space-y-10"
       >
-        <div className="space-y-4 md:space-y-6">
-          <h2 className="text-4xl md:text-7xl font-black tracking-tight leading-[1.1]">
+        <div className="space-y-4">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1]">
             Build Activation Infrastructure That{" "}
             <span className="text-brand-blue">Compounds</span>
           </h2>

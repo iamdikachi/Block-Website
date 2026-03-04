@@ -31,7 +31,7 @@ export function CoreDeliverables() {
   return (
     <section
       id="deliverables"
-      className="container mx-auto px-6 mt-40 max-w-6xl"
+      className="container mx-auto px-6  max-w-6xl"
     >
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -40,7 +40,7 @@ export function CoreDeliverables() {
         transition={{ duration: 1, ease: "easeOut" }}
         className="mb-16 space-y-4"
       >
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-bold mt-20 tracking-tight">
           Core Deliverables
         </h2>
         <div className="w-12 h-1 bg-brand-blue rounded-full" />
