@@ -7,7 +7,20 @@ import CalendlyWithCallback from "@/components/CalendlyWithCallBack";
 import { createNotionBooking } from "@/lib/notion";
 import { motion } from "framer-motion";
 
+import { useState } from "react";
+import { SuccessModal } from "@/components/SuccessModal";
+
 export default function BookPage() {
+  const [modalConfig, setModalConfig] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+  });
+
   async function handleBooking(payload: any) {
     try {
       await createNotionBooking({
@@ -15,12 +28,20 @@ export default function BookPage() {
         inviteeUri: payload.invitee.uri,
         bookedAt: new Date().toISOString(),
       });
-      alert("Success! Your booking has been recorded in our Notion hub.");
+      setModalConfig({
+        isOpen: true,
+        title: "Booking Confirmed!",
+        message:
+          "Your call has been scheduled and your personal onboarding hub is being prepared in Notion. See you soon!",
+      });
     } catch (error: any) {
       console.error(error);
-      alert(
-        "Booking recorded on Calendly, but failed to sync to Notion. We'll handle it manually!",
-      );
+      setModalConfig({
+        isOpen: true,
+        title: "Booking Partial Success",
+        message:
+          "Your call is scheduled on Calendly, but we hit a snag syncing with Notion. Don't worry, our team will set it up manually!",
+      });
     }
   }
 
@@ -80,6 +101,13 @@ export default function BookPage() {
       </main>
 
       <Footer />
+
+      <SuccessModal
+        isOpen={modalConfig.isOpen}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        title={modalConfig.title}
+        message={modalConfig.message}
+      />
     </div>
   );
 }
