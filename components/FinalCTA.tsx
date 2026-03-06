@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 
 export function FinalCTA() {
   const containerVariants: Variants = {
@@ -39,19 +40,21 @@ export function FinalCTA() {
             long-term protocol participants.
           </p>
         </div>
-        <motion.a
-          href="https://calendly.com/your-username"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           whileHover={{
             scale: 1.02,
             boxShadow: "0 0 40px rgba(59,130,246,0.4)",
           }}
           whileTap={{ scale: 0.98 }}
-          className="w-full px-2 sm:w-auto md:px-12 py-5 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-base md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] active:scale-95 inline-flex items-center justify-center cursor-pointer"
+          className="w-full sm:w-auto"
         >
-          Book 15-Minute Activation Audit
-        </motion.a>
+          <Link
+            href="/book"
+            className="w-full px-2 sm:w-auto md:px-12 py-5 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-base md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] active:scale-95 inline-flex items-center justify-center cursor-pointer"
+          >
+            Book 15-Minute Activation Audit
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );

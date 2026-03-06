@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from 'next/link';
+import Link from "next/link";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,23 +14,23 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         className="fixed top-0 left-0 right-0 z-60 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-brand-dark/80 border-b border-white/5 sm:px-12"
-      >  <Link href="/">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex items-center gap-2"
-        >
-        
-          <div className="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
-          </div>
-          <span className="text-xl font-bold tracking-tighter uppercase">
-            The Bloc
-          </span>
-      
-        </motion.div>
-    </Link>
+      >
+        {" "}
+        <Link href="/">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex items-center gap-2"
+          >
+            <div className="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center">
+              <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
+            </div>
+            <span className="text-xl font-bold tracking-tighter uppercase">
+              The Bloc
+            </span>
+          </motion.div>
+        </Link>
         {/* Desktop Menu */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -47,14 +47,13 @@ export function Navbar() {
           >
             Deliverables
           </a>
-          <a
-            href="#book-call"
+          <Link
+            href="/book"
             className="bg-brand-blue hover:bg-blue-600 px-6 py-2.5 rounded-lg text-white font-semibold transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
           >
             BOOK CALL
-          </a>
+          </Link>
         </motion.div>
-
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -99,13 +98,13 @@ export function Navbar() {
               >
                 Deliverables
               </a>
-              <a
-                href="#book-call"
+              <Link
+                href="/book"
                 onClick={() => setIsOpen(false)}
                 className="bg-brand-blue text-white py-4 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)]"
               >
                 BOOK CALL
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

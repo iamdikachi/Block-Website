@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { ProblemSection } from "@/components/ProblemSection";
 import { ActivationLifecycle } from "@/components/ActivationLifecycle";
 import { CoreDeliverables } from "@/components/CoreDeliverables";
+import { HubSection } from "@/components/HubSection";
 import { ReadyCTA } from "@/components/ReadyCTA";
 import { ImplementationProcess } from "@/components/ImplementationProcess";
 import { FitSection } from "@/components/FitSection";
@@ -15,7 +16,6 @@ import { Footer } from "@/components/layout/Footer";
 export default function Home() {
   return (
     <div className="min-h-screen bg-brand-dark text-white selection:bg-brand-blue/30 overflow-x-hidden relative">
-
       <motion.div
         animate={{
           x: [0, 100, 0],
@@ -44,7 +44,6 @@ export default function Home() {
       <Navbar />
 
       <main className="relative pt-32 pb-24">
- 
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] rounded-full -z-10 pointer-events-none"
           style={{
@@ -58,6 +57,7 @@ export default function Home() {
         <ProblemSection />
         <ActivationLifecycle />
         <CoreDeliverables />
+        <HubSection />
         <ReadyCTA />
         <ImplementationProcess />
         <FitSection />

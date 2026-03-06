@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function ReadyCTA() {
   return (
@@ -26,33 +27,35 @@ export function ReadyCTA() {
             your protocol.
           </p>
         </div>
-        <motion.a
-          href="https://calendly.com/your-username"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           whileHover={{
             scale: 1.02,
             boxShadow: "0 0 30px rgba(59,130,246,0.4)",
           }}
           whileTap={{ scale: 0.98 }}
-          className="w-full sm:w-auto md:px-12 py-2 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-[10px] md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] inline-flex items-center justify-center gap-3 active:scale-95 cursor-pointer"
+          className="w-full sm:w-auto"
         >
-          Book 15-Minute Audit
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          <Link
+            href="/book"
+            className="w-full md:px-12 py-2 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-[10px] md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] inline-flex items-center justify-center gap-3 active:scale-95 cursor-pointer"
           >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </motion.a>
+            Book 15-Minute Audit
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );
