@@ -7,7 +7,10 @@ interface Props {
   onBookingComplete?: (eventData: any) => void;
 }
 
-export default function CalendlyWithCallback({ url, onBookingComplete }: Props) {
+export default function CalendlyWithCallback({
+  url,
+  onBookingComplete,
+}: Props) {
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
       if (e.origin !== "https://calendly.com") return;
@@ -15,7 +18,6 @@ export default function CalendlyWithCallback({ url, onBookingComplete }: Props) 
       const { event, payload } = e.data;
 
       if (event === "calendly.event_scheduled") {
-        // payload contains: event.uri, invitee.uri
         onBookingComplete?.(payload);
       }
     }
@@ -24,5 +26,15 @@ export default function CalendlyWithCallback({ url, onBookingComplete }: Props) 
     return () => window.removeEventListener("message", handleMessage);
   }, [onBookingComplete]);
 
-  return <InlineWidget url={url} styles={{ height: "700px" }} />;
+  return (
+    <div className="w-full min-h-[600px] md:min-h-[700px]">
+      <InlineWidget
+        url={url}
+        styles={{
+          height: "600px",
+          width: "100%",
+        }}
+      />
+    </div>
+  );
 }

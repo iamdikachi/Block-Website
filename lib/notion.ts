@@ -1,23 +1,29 @@
 // lib/notion.ts
-// This file is now a client-safe wrapper that calls our internal API routes.
-// We no longer import @notionhq/client here to keep the bundle small and secure.
 
-/**
- * Fetches pages from the internal API route.
- * Safe to call from Client Components.
- */
 export async function getNotionPages() {
-  const response = await fetch("/api/notion/pages");
-  if (!response.ok) {
-    throw new Error("Failed to fetch pages from Notion");
+  try {
+    const response = await fetch("/api/notion/pages");
+    const data = await response.json().catch(() => ({}));
+    
+    if (data.logs) {
+      console.group("Notion Backend Diagnostic Logs");
+      data.logs.forEach((log: string) => console.log(log));
+      console.groupEnd();
+    }
+
+    if (!response.ok) {
+      console.error("Notion Fetch API Error Details:", data);
+      const errMsg = data.error || data.message || "Failed to fetch pages from Notion";
+      const logSummary = data.logs ? " | Logs: " + data.logs.join(" -> ") : "";
+      throw new Error(errMsg + logSummary);
+    }
+    return data.pages;
+  } catch (err: any) {
+    console.error("Notion SDK Wrapper Error:", err);
+    throw err;
   }
-  return response.json();
 }
 
-/**
- * Sends booking data to the internal API route.
- * Safe to call from Client Components.
- */
 export async function createNotionBooking(data: {
   eventUri: string;
   inviteeUri: string;
@@ -29,10 +35,11 @@ export async function createNotionBooking(data: {
     body: JSON.stringify(data),
   });
   
+  const result = await response.json().catch(() => ({}));
+  
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || "Failed to create booking in Notion");
+    throw new Error(result.error || "Failed to create booking in Notion");
   }
   
-  return response.json();
+  return result;
 }

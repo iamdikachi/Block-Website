@@ -6,26 +6,30 @@ export async function POST(request: Request) {
     const data = await request.json();
     const { eventUri, inviteeUri, bookedAt } = data;
 
-    const notion = new Client({
-      auth: process.env.NOTION_SECRET,
-    });
+    const secret = process.env.NOTION_SECRET?.trim();
+    const dbId = process.env.NOTION_DATABASE_ID?.trim();
 
-    // We use the generic request method since the SDK version v5 for this environment 
-    // has missing namespaces for some endpoints in the high-level API.
+    if (!secret || !dbId) {
+      console.error("ENVIRONMENT ERROR: Missing secret or database ID in booking route");
+      return NextResponse.json({ error: "Configuration missing" }, { status: 500 });
+    }
+
+    const notion = new Client({ auth: secret });
+
     await notion.request({
       path: "pages",
       method: "post",
       body: {
-        parent: { database_id: process.env.NOTION_DATABASE_ID! },
+        parent: { database_id: dbId },
         properties: {
           Name: {
             title: [{ text: { content: `Booking — ${bookedAt}` } }],
           },
-          "Event URI": {
-            url: eventUri,
+          "Event URL": {
+            email: eventUri, // Based on logs showing (email) type
           },
-          "Invitee URI": {
-            url: inviteeUri,
+          "Invite URL": {
+            url: inviteeUri, // Based on logs showing (url) type
           },
           Status: {
             select: { name: "Confirmed" },
@@ -39,7 +43,18 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error("Booking Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("DEBUG NOTION BOOKING ERROR:", {
+      message: error.message,
+      code: error.code,
+      status: error.status,
+      body: error.body,
+    });
+    return NextResponse.json(
+      { 
+        error: error.message, 
+        details: error.body || "No additional details" 
+      }, 
+      { status: error.status || 500 }
+    );
   }
 }

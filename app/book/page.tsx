@@ -2,15 +2,16 @@
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
 import CalendlyWithCallback from "@/components/CalendlyWithCallBack";
 import { createNotionBooking } from "@/lib/notion";
 import { motion } from "framer-motion";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { SuccessModal } from "@/components/SuccessModal";
 
 export default function BookPage() {
+  const router = useRouter();
   const [modalConfig, setModalConfig] = useState<{
     isOpen: boolean;
     title: string;
@@ -65,9 +66,12 @@ export default function BookPage() {
             </p>
           </div>
 
-          <div className="bg-brand-dark/50 border border-white/5 rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
+          <div className="bg-brand-dark/50 border border-white/5 rounded-xl md:rounded-2xl backdrop-blur-sm shadow-2xl relative">
             <CalendlyWithCallback
-              url="https://calendly.com/your-username/30min"
+              url={
+                process.env.NEXT_PUBLIC_CALENDLY_URL ||
+                "https://calendly.com/emmanuelnnadi097/meeting-mr-presisdent-federal-republic-of-nigeria"
+              }
               onBookingComplete={handleBooking}
             />
           </div>
@@ -104,7 +108,12 @@ export default function BookPage() {
 
       <SuccessModal
         isOpen={modalConfig.isOpen}
-        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+        onClose={() => {
+          setModalConfig((prev) => ({ ...prev, isOpen: false }));
+          if (modalConfig.title === "Booking Confirmed!") {
+            router.push("/");
+          }
+        }}
         title={modalConfig.title}
         message={modalConfig.message}
       />

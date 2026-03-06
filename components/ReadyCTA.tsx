@@ -19,7 +19,7 @@ export function ReadyCTA() {
         }}
       >
         <div className="space-y-4 md:space-y-6">
-          <h2 className="text-base md:text-6xl font-black tracking-tight leading-tight">
+          <h2 className="text-base md:text-5xl font-black tracking-tight leading-tight">
             Ready to activate your users?
           </h2>
           <p className="text-zinc-400 text-xs md:text-xl max-w-xl mx-auto leading-relaxed font-medium">
