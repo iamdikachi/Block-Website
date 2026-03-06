@@ -54,13 +54,13 @@ export function ImplementationProcess() {
       </motion.div>
 
       <div className="relative flex flex-col gap-0">
-        {/* Vertical connecting line */}
+   
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={lineVariants}
-          className="absolute left-[28px] top-12 bottom-12 w-px bg-gradient-to-b from-brand-blue/40 via-white/10 to-transparent hidden sm:block"
+          className="absolute left-[28px] top-12 bottom-12 w-px bg-linear-to-b from-brand-blue/40 via-white/10 to-transparent hidden sm:block"
         />
 
         <motion.div
@@ -89,9 +89,9 @@ export function ImplementationProcess() {
             <motion.div
               key={step.num}
               variants={itemVariants}
-              className={`flex gap-8 items-start ${i < 2 ? "pb-16" : ""}`}
+              className={`flex flex-col md:flex-row gap-8 items-start ${i < 2 ? "pb-16" : ""}`}
             >
-              {/* Number badge */}
+  
               <motion.div
                 whileHover={{ scale: 1.1, borderColor: "#3b82f6" }}
                 className="relative z-10 shrink-0 w-14 h-14 rounded-xl bg-[#0d1a2f] border border-brand-blue/40 flex flex-col items-center justify-center gap-0.5 shadow-[0_0_16px_rgba(59,130,246,0.15)] transition-colors"
@@ -100,7 +100,7 @@ export function ImplementationProcess() {
                   {step.num}
                 </span>
               </motion.div>
-              {/* Content */}
+ 
               <div className="pt-2 space-y-3">
                 <h3 className="text-lg font-bold tracking-[0.2em] uppercase text-white">
                   {step.title}

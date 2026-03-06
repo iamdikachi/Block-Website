@@ -53,10 +53,10 @@ export function ProblemSection() {
           variants={headerVariants}
           className="space-y-4 mb-12 md:mb-20 text-center sm:text-left"
         >
-          <h2 className="text-3xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-xl md:text-6xl font-bold tracking-tight">
             Most Web3 Projects <span className="text-zinc-500">Lose Users</span>
           </h2>
-          <p className="text-lg md:text-xl text-zinc-500 max-w-2xl leading-relaxed">
+          <p className="text-base md:text-xl text-zinc-500 max-w-2xl leading-relaxed">
             Traditional onboarding fails in the decentralized world. We identify
             and fix the structural leaks in your user funnel.
           </p>

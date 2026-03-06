@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from 'next/link';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,22 +13,24 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#030712]/80 border-b border-white/5 sm:px-12"
-      >
+        className="fixed top-0 left-0 right-0 z-60 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-brand-dark/80 border-b border-white/5 sm:px-12"
+      >  <Link href="/">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="flex items-center gap-2"
         >
+        
           <div className="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center">
             <div className="w-4 h-4 bg-white rounded-sm rotate-45" />
           </div>
           <span className="text-xl font-bold tracking-tighter uppercase">
             The Bloc
           </span>
+      
         </motion.div>
-
+    </Link>
         {/* Desktop Menu */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -55,7 +58,7 @@ export function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex md:hidden flex-col gap-1.5 p-2 z-[70]"
+          className="flex md:hidden flex-col gap-1.5 p-2 z-70"
         >
           <motion.div
             animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
@@ -79,7 +82,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-50 bg-[#030712] pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-50 bg-brand-dark pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-8 text-2xl font-bold text-center">
               <a

@@ -81,7 +81,7 @@ export function ActivationLifecycle() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-y-16 gap-x-4 text-center relative z-10"
+          className="grid grid-cols-1 sm:grid-cols-4 gap-y-16 gap-x-4 text-center relative z-10"
         >
           {[
             {
