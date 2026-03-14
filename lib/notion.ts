@@ -28,6 +28,7 @@ export async function createNotionBooking(data: {
   eventUri: string;
   inviteeUri: string;
   bookedAt: string;
+  name?: string;
 }) {
   const response = await fetch("/api/notion/book", {
     method: "POST",
@@ -39,6 +40,22 @@ export async function createNotionBooking(data: {
   
   if (!response.ok) {
     throw new Error(result.error || "Failed to create booking in Notion");
+  }
+  
+  return result;
+}
+
+export async function deleteNotionBooking(pageId: string) {
+  const response = await fetch("/api/notion/delete", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ pageId }),
+  });
+  
+  const result = await response.json().catch(() => ({}));
+  
+  if (!response.ok) {
+    throw new Error(result.error || "Failed to delete booking in Notion");
   }
   
   return result;

@@ -37,7 +37,7 @@ export function ReadyCTA() {
         >
           <Link
             href="/book"
-            className="w-full md:px-12 py-2 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-[10px] md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] inline-flex items-center justify-center gap-3 active:scale-95 cursor-pointer"
+            className="w-full md:px-4 md:w-[50%] py-2 md:py-6 bg-brand-blue hover:bg-blue-600 rounded-xl md:rounded-2xl font-bold text-[10px] md:text-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] inline-flex items-center justify-center gap-3 active:scale-95 cursor-pointer"
           >
             Book 15-Minute Audit
             <svg

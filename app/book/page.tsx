@@ -28,6 +28,7 @@ export default function BookPage() {
         eventUri: payload.event.uri,
         inviteeUri: payload.invitee.uri,
         bookedAt: new Date().toISOString(),
+        name: payload.invitee.name || "Unknown Invitee",
       });
       setModalConfig({
         isOpen: true,

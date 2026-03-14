@@ -112,7 +112,7 @@ export function Hero() {
             className="w-full sm:w-auto"
           >
             <Link
-              href="/#hub"
+              href="/demo"
               className="w-full px-4 sm:w-auto md:px-10 py-2 md:py-5 bg-white/5 border border-white/10 rounded-md md:rounded-2xl font-bold text-base md:text-lg transition-all flex items-center justify-center cursor-pointer"
             >
               View Demo <span className="hidden md:block">Onboarding Hub</span>

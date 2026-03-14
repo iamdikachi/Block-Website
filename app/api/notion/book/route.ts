@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const { eventUri, inviteeUri, bookedAt } = data;
+    const { eventUri, inviteeUri, bookedAt, name } = data;
 
     const secret = process.env.NOTION_SECRET?.trim();
     const dbId = process.env.NOTION_DATABASE_ID?.trim();
@@ -23,13 +23,13 @@ export async function POST(request: Request) {
         parent: { database_id: dbId },
         properties: {
           Name: {
-            title: [{ text: { content: `Booking — ${bookedAt}` } }],
+            title: [{ text: { content: name || `Booking — ${bookedAt}` } }],
           },
           "Event URL": {
-            email: eventUri, // Based on logs showing (email) type
+            email: eventUri, 
           },
           "Invite URL": {
-            url: inviteeUri, // Based on logs showing (url) type
+            url: inviteeUri, 
           },
           Status: {
             select: { name: "Confirmed" },
