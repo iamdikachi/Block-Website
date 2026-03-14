@@ -101,7 +101,7 @@ export default function DemoPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-sm font-medium mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-[10px] md:text-sm font-medium mb-8"
           >
             <Zap className="w-4 h-4" /> Community Activation Campaign • 30 Days
           </motion.div>
@@ -109,7 +109,7 @@ export default function DemoPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+            className="text-3xl md:text-7xl font-bold mb-6 tracking-tight"
           >
             Welcome to the <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-blue-400">Activation Hub</span>
@@ -118,10 +118,31 @@ export default function DemoPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10"
+            className="text-gray-400 text-xs md:text-xl max-w-2xl mx-auto mb-10"
           >
             Official engagement portal for [PROJECT NAME]. Complete missions, earn XP, and level up to become a core contributor.
           </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:max-w-3xl md:mx-auto text-sm
+             text-gray-500 font-medium"
+          >
+            {[
+              "Learn ecosystem",
+              "Explore protocol",
+              "Complete missions",
+              "Earn rewards",
+              "Become contributor"
+            ].map((text, i) => (
+              <div key={i} className="flex md:items-center md:justify-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-brand-blue" />
+                {text}
+              </div>
+            ))}
+          </motion.div>
         </section>
 
         {/* Level & Stats Section */}
@@ -212,7 +233,7 @@ export default function DemoPage() {
               <h2 className="text-4xl font-bold mb-3">Mission Board</h2>
               <p className="text-gray-400">Complete tasks to earn XP and progress through levels</p>
             </div>
-            <div className="flex p-1 bg-white/5 rounded-2xl border border-white/10 self-start">
+            <div className="flex flex-wrap md:flex-row p-1 bg-white/5 rounded-2xl border border-white/10 self-start">
               <button 
                 type="button"
                 id="tab-explorer"
@@ -260,11 +281,11 @@ export default function DemoPage() {
         </section>
 
         {/* Leaderboard & Rewards */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
-          <div className="bg-card-bg border border-white/10 rounded-3xl p-8">
+        <section className="grid grid-cols-1 lg:grid-cols-2  md:gap-12 gap-6 mb-32">
+          <div className="bg-card-bg border border-white/10 rounded-3xl md:p-8 p-4">
             <div className="flex items-center gap-3 mb-8">
               <Trophy className="w-6 h-6 text-yellow-500" />
-              <h2 className="text-2xl font-bold">Top Contributors</h2>
+              <h2 className="text-xl md:text-2xl font-bold">Top Contributors</h2>
             </div>
             <div className="space-y-4">
               {[
@@ -274,7 +295,7 @@ export default function DemoPage() {
                 { rank: 4, address: "0xbf...4421", points: "180 XP" },
                 { rank: 5, address: "0xde...1102", points: "160 XP" },
               ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition-all">
+                <div key={i} className=" flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-white/10 transition-all">
                   <div className="flex items-center gap-4">
                     <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${i === 0 ? 'bg-yellow-500/20 text-yellow-500' : 'bg-white/10'}`}>
                       {item.rank}
@@ -294,12 +315,12 @@ export default function DemoPage() {
             </p>
             <div className="grid grid-cols-2 gap-4">
               {[
-                "Token Rewards",
-                "NFT Whitelist",
-                "Community Roles",
-                "Early Access",
-                "Contributor Badges",
-                "Direct Support"
+                "Token rewards",
+                "NFT whitelist spots",
+                "Exclusive community roles",
+                "Early access to features",
+                "Contributor recognition",
+                "Direct team support"
               ].map((reward, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
                   <div className="w-2 h-2 rounded-full bg-brand-blue" />
@@ -323,26 +344,119 @@ export default function DemoPage() {
               { week: "Week 3", title: "Contributor Missions", active: false },
               { week: "Week 4", title: "Leaderboard Competition", active: false },
             ].map((step, i) => (
-              <div key={i} className={`p-6 rounded-2xl border ${step.active ? 'border-brand-blue bg-brand-blue/10' : 'border-white/10 bg-white/5 opacity-60'}`}>
+              <div key={i} className={`p-6 rounded-2xl border ${step.active ? 'border-brand-blue bg-brand-blue/10 shadow-[0_0_20px_rgba(59,130,246,0.1)]' : 'border-white/10 bg-white/5 opacity-60'}`}>
                 <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${step.active ? 'text-brand-blue' : 'text-gray-500'}`}>{step.week}</p>
                 <h3 className="font-bold">{step.title}</h3>
               </div>
             ))}
           </div>
+          <div className="mt-12 text-center">
+            <p className="text-zinc-500 text-sm italic">Engagement psychology: Time-boxed events create urgency.</p>
+          </div>
         </section>
 
-        {/* Closing CTA */}
-        <section className="text-center bg-gradient-to-b from-brand-blue/20 to-transparent rounded-3xl p-16 border border-brand-blue/20 relative overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-4xl font-bold mb-6">Ready to activate your community?</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-10">
-              This demo hub shows how THE BLOC helps Web3 ecosystems onboard and activate users through structured, gamified journeys.
+        {/* Community Guidelines & Future */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32 border-t border-white/5 pt-24">
+          <div>
+            <h2 className="text-2xl font-bold mb-6">Community Guidelines</h2>
+            <ul className="space-y-4">
+              {[
+                "Submit genuine mission proofs",
+                "Respect other community members",
+                "Follow ecosystem guidelines",
+                "No spam or fake submissions"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-gray-400 text-sm">
+                  <ShieldCheck className="w-5 h-5 text-brand-blue shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold mb-6">What Happens Next?</h2>
+            <p className="text-gray-400 text-sm mb-6">
+              Participants who reach Contributor Level may be invited to:
             </p>
-            <button className="px-8 py-4 bg-brand-blue text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-[0_0_30px_rgba(59,130,246,0.4)]">
+            <ul className="space-y-4">
+              {[
+                "Join future campaigns",
+                "Collaborate with the project",
+                "Help lead community initiatives"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-gray-400 text-sm">
+                  <Star className="w-5 h-5 text-brand-blue shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* About THE BLOC & Founders Insight */}
+        <section className="mb-32">
+          <div className="bg-gradient-to-r from-brand-blue/10 to-transparent border border-brand-blue/20 rounded-3xl p-4 md:p-12 text-center mb-12">
+            <h2 className="text-lg md:text-3xl font-bold mb-4">About THE BLOC</h2>
+            <p className="text-gray-400 md:max-w-2xl md:mx-auto text-sm leading-relaxed mb-8">
+              THE BLOC builds User Activation Infrastructure for Web3 ecosystems. Our mission is to help projects onboard users, activate communities, reward contributors, and grow sustainably.
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 text-xs font-black uppercase tracking-widest text-brand-blue">
+              <span>Onboard Users</span>
+              <span>Activate Communities</span>
+              <span>Reward Contributors</span>
+              <span>Grow Sustainably</span>
+            </div>
+          </div>
+
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-4 md:p-12">
+            <h2 className="text-xl font-bold mb-8 text-center">Engagement Mechanics Built Into This Hub</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {[
+                { name: "Progress Tracking", icon: <Target className="w-5 h-5" /> },
+                { name: "Level Systems", icon: <Trophy className="w-5 h-5" /> },
+                { name: "Gamified Missions", icon: <Zap className="w-5 h-5" /> },
+                { name: "Social Competition", icon: <Users className="w-5 h-5" /> },
+                { name: "Reward Incentives", icon: <Star className="w-5 h-5" /> },
+                { name: "Recognition", icon: <ShieldCheck className="w-5 h-5" /> }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center text-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    {item.icon}
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-tighter text-zinc-500">{item.name}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-12 pt-12 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+              <div>
+                <h4 className="font-bold text-white mb-2 text-sm">1. Guided Journey</h4>
+                <p className="text-zinc-500 text-xs">Users are guided step-by-step from explorers to contributors.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-2 text-sm">2. Structured Engagement</h4>
+                <p className="text-zinc-500 text-xs">A clear framework for users to participate consistently.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-2 text-sm">3. Natural Contributors</h4>
+                <p className="text-zinc-500 text-xs">Top users emerge through verified proof of contribution.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="text-center bg-brand-blue rounded-3xl p-4 md:p-16 relative 
+        overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.2)]">
+          <div className="relative z-10">
+            <h2 className="text-xl md:text-4xl font-bold mb-6">For Project Teams</h2>
+            <p className="text-white/80 md:max-w-2xl mx-auto mb-10 text-lg">
+              If you're a Web3 project interested in running an Activation Campaign like this, reach out to the THE BLOC team.
+            </p>
+            <button className="px-6 md:px-10 py-5 bg-white text-[12px] md:text-lg text-brand-blue rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl">
               Build Your Hub with THE BLOC
             </button>
           </div>
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-blue/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
         </section>
       </main>
 
