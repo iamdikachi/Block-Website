@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import Link from "next/link";
 import { 
   Trophy, 
   Target, 
@@ -394,7 +395,7 @@ export default function DemoPage() {
         </section>
 
         {/* About THE BLOC & Founders Insight */}
-        <section className="mb-32">
+        <section className="mb-20">
           <div className="bg-gradient-to-r from-brand-blue/10 to-transparent border border-brand-blue/20 rounded-3xl p-4 md:p-12 text-center mb-12">
             <h2 className="text-lg md:text-3xl font-bold mb-4">About THE BLOC</h2>
             <p className="text-gray-400 md:max-w-2xl md:mx-auto text-sm leading-relaxed mb-8">
@@ -449,12 +450,15 @@ export default function DemoPage() {
         overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.2)]">
           <div className="relative z-10">
             <h2 className="text-xl md:text-4xl font-bold mb-6">For Project Teams</h2>
-            <p className="text-white/80 md:max-w-2xl mx-auto mb-10 text-lg">
+            <p className="text-white/80 text-xs md:max-w-2xl md:mx-auto mb-10 md:text-lg">
               If you're a Web3 project interested in running an Activation Campaign like this, reach out to the THE BLOC team.
             </p>
-            <button className="px-6 md:px-10 py-5 bg-white text-[12px] md:text-lg text-brand-blue rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl">
+            <Link 
+              href="/book"
+              className="px-6 md:px-10 py-5 bg-white text-[12px] md:text-lg text-brand-blue rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl inline-block"
+            >
               Build Your Hub with THE BLOC
-            </button>
+            </Link>
           </div>
           <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
         </section>
